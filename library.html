@@ -1,10 +1,12 @@
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Digital Library</title>
+<title>AI Engineering Digital Library</title>
 
 <style>
 * {
@@ -13,52 +15,36 @@
     box-sizing: border-box;
 }
 
-:root {
-    --primary: #5145cd;
-    --secondary: #7868f5;
-    --dark: #171b3b;
-    --light: #f5f6ff;
-    --white: #ffffff;
-    --muted: #777b98;
-    --green: #138a54;
-    --red: #d93652;
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 90px;
-}
-
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: var(--light);
-    color: var(--dark);
+    font-family: Arial, sans-serif;
+    background: #f5f5ff;
+    color: #202044;
+    line-height: 1.6;
 }
 
-/* Header */
+/* HEADER */
 header {
     background: linear-gradient(120deg, #211b60, #5145cd, #8273ff);
     color: white;
-    padding: 22px 7%;
+    padding: 20px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
     flex-wrap: wrap;
+    gap: 15px;
 }
 
 .logo {
-    font-size: 25px;
-    font-weight: 800;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .logo span {
-    color: #bdb5ff;
+    color: #d1caff;
 }
 
 header p {
     font-size: 13px;
-    margin-top: 5px;
     color: #e5e2ff;
 }
 
@@ -68,443 +54,386 @@ nav {
     flex-wrap: wrap;
 }
 
-nav a {
+nav button {
+    background: transparent;
+    border: none;
     color: white;
-    text-decoration: none;
-    padding: 10px 14px;
-    border-radius: 8px;
-    font-weight: 600;
+    padding: 10px 12px;
+    border-radius: 7px;
+    cursor: pointer;
     font-size: 14px;
-    transition: .3s;
 }
 
-nav a:hover,
-nav a:focus {
-    background: #ffffff25;
+nav button:hover,
+nav button.active {
+    background: #ffffff35;
 }
 
-/* Hero */
+/* PAGE NAVIGATION */
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+/* HOME */
 .hero {
-    padding: 65px 7% 45px;
-    background:
-        radial-gradient(circle at 90% 20%, #d8d2ff 0, transparent 28%),
-        linear-gradient(120deg, #f0efff, #ffffff);
+    padding: 60px 7%;
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
+    grid-template-columns: 1.3fr 1fr;
     gap: 35px;
     align-items: center;
+    background: linear-gradient(120deg, #efedff, white);
 }
 
 .tag {
     display: inline-block;
-    background: #e3e0ff;
-    color: var(--primary);
-    padding: 8px 14px;
-    border-radius: 25px;
+    background: #e2deff;
+    color: #5145cd;
+    padding: 7px 13px;
+    border-radius: 20px;
     font-size: 12px;
-    font-weight: 800;
-    margin-bottom: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
 }
 
 .hero h1 {
-    font-size: clamp(34px, 5vw, 55px);
-    line-height: 1.15;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.2;
     margin-bottom: 18px;
 }
 
 .hero h1 span {
-    color: var(--primary);
+    color: #5145cd;
 }
 
 .hero p {
-    color: var(--muted);
-    line-height: 1.8;
-    max-width: 560px;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-top: 25px;
-}
-
-.btn {
-    border: none;
-    border-radius: 10px;
-    padding: 13px 19px;
-    font-weight: 700;
-    cursor: pointer;
-    font-size: 14px;
-    transition: .25s;
-}
-
-.btn:hover {
-    transform: translateY(-2px);
-    filter: brightness(.96);
-}
-
-.btn-primary {
-    background: var(--primary);
-    color: white;
-}
-
-.btn-light {
-    background: white;
-    color: var(--primary);
-    border: 1px solid #ddd9ff;
+    color: #6c6c88;
+    margin-bottom: 20px;
 }
 
 .hero-art {
-    background: linear-gradient(140deg, #6555df, #241b65);
-    border-radius: 25px;
-    min-height: 270px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    background: linear-gradient(135deg, #6555df, #211b60);
     color: white;
-    box-shadow: 0 18px 40px #5145cd30;
     text-align: center;
-    padding: 25px;
+    padding: 35px 20px;
+    border-radius: 25px;
 }
 
-.hero-art .big-book {
+.hero-art .book {
     font-size: 90px;
-    margin-bottom: 10px;
-    filter: drop-shadow(0 12px 10px #00000030);
-}
-
-.hero-art h2 {
-    color: white;
-    margin-bottom: 8px;
 }
 
 .hero-art p {
-    color: #e2deff;
-    font-size: 14px;
+    color: #e5e2ff;
+    margin: 0;
 }
 
-/* General sections */
+/* BUTTONS */
+.btn {
+    border: none;
+    border-radius: 9px;
+    padding: 12px 17px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 5px 3px 5px 0;
+}
+
+.primary {
+    background: #5145cd;
+    color: white;
+}
+
+.secondary {
+    background: white;
+    color: #5145cd;
+    border: 1px solid #d8d3ff;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+/* COMMON SECTIONS */
 section {
-    padding: 45px 7%;
+    padding: 40px 7%;
 }
 
 .section-heading {
-    margin-bottom: 25px;
-}
-
-.section-heading h2 {
-    font-size: 29px;
-    margin-bottom: 8px;
-}
-
-.section-heading p {
-    color: var(--muted);
-    line-height: 1.6;
+    margin-bottom: 23px;
 }
 
 .section-label {
-    color: var(--primary);
-    font-weight: 800;
+    color: #5145cd;
     font-size: 12px;
+    font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 8px;
+    letter-spacing: 1px;
 }
 
-/* Dashboard */
-.dashboard {
-    padding-top: 30px;
-    padding-bottom: 15px;
+.section-heading h2 {
+    font-size: 28px;
+    margin: 5px 0;
 }
 
+.section-heading p {
+    color: #777790;
+}
+
+/* DASHBOARD */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
+    gap: 17px;
 }
 
 .stat-card {
     background: white;
-    border: 1px solid #eae9fa;
     padding: 22px;
-    border-radius: 16px;
-    box-shadow: 0 5px 20px #24204c08;
+    border: 1px solid #e9e6ff;
+    border-radius: 15px;
 }
 
 .stat-icon {
-    font-size: 26px;
-    margin-bottom: 12px;
+    font-size: 27px;
 }
 
 .stat-number {
+    color: #5145cd;
     font-size: 30px;
-    font-weight: 800;
-    color: var(--primary);
-    margin-bottom: 5px;
+    font-weight: bold;
 }
 
 .stat-card p {
-    color: var(--muted);
+    color: #777790;
     font-size: 13px;
 }
 
-/* Search and books */
-.books-section {
-    padding-top: 35px;
-}
-
-.book-toolbar {
+/* BOOK SEARCH */
+.toolbar {
     display: flex;
-    justify-content: space-between;
-    gap: 15px;
+    gap: 12px;
     flex-wrap: wrap;
-    margin-bottom: 22px;
+    margin-bottom: 18px;
 }
 
 .search-input,
 .category-select {
-    padding: 13px 15px;
-    border: 1px solid #deddf0;
+    padding: 13px;
+    border: 1px solid #dcd9f1;
+    border-radius: 9px;
     background: white;
-    border-radius: 10px;
     font-size: 14px;
-    outline: none;
 }
 
 .search-input {
     flex: 1;
-    min-width: 220px;
+    min-width: 200px;
 }
 
 .category-select {
-    min-width: 170px;
+    min-width: 200px;
 }
 
-.search-input:focus,
-.category-select:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px #5145cd15;
-}
-
-.results-count {
-    color: var(--muted);
-    font-size: 14px;
+.results {
+    color: #777790;
     margin-bottom: 18px;
+    font-size: 14px;
 }
 
+/* BOOK CARDS */
 .book-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
-    gap: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 20px;
 }
 
 .book-card {
-    background: white;
-    border-radius: 16px;
-    padding: 17px;
-    border: 1px solid #ebeaf7;
-    box-shadow: 0 5px 20px #24204c08;
-    transition: transform .25s, box-shadow .25s;
     display: flex;
     flex-direction: column;
+    background: white;
+    border: 1px solid #e8e5fa;
+    border-radius: 15px;
+    padding: 15px;
+    transition: 0.3s;
 }
 
 .book-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 15px 30px #24204c13;
+    transform: translateY(-4px);
 }
 
 .book-cover {
-    height: 190px;
-    border-radius: 12px;
-    margin-bottom: 15px;
+    height: 150px;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 65px;
-    overflow: hidden;
-    background: linear-gradient(135deg, #e3e0ff, #f5e9ff);
+    margin-bottom: 13px;
 }
 
-.book-cover img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.book-category {
-    color: var(--primary);
+.category-badge {
+    align-self: flex-start;
+    color: #5145cd;
     background: #eeecff;
-    padding: 5px 9px;
+    padding: 4px 9px;
     border-radius: 20px;
     font-size: 11px;
-    font-weight: 800;
-    display: inline-block;
-    align-self: flex-start;
-    margin-bottom: 10px;
+    font-weight: bold;
+    margin-bottom: 9px;
 }
 
 .book-card h3 {
     font-size: 17px;
-    margin-bottom: 9px;
-    line-height: 1.4;
+    margin-bottom: 8px;
 }
 
-.book-card .author {
-    color: var(--muted);
+.author {
+    color: #777790;
     font-size: 13px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .status {
     font-size: 12px;
-    font-weight: 800;
-    margin-bottom: 15px;
+    font-weight: bold;
+    margin-bottom: 14px;
 }
 
 .available {
-    color: var(--green);
+    color: #138a54;
 }
 
 .unavailable {
-    color: var(--red);
+    color: #d93652;
 }
 
-.book-card .btn {
+.borrow-btn {
     margin-top: auto;
     width: 100%;
 }
 
-.btn-borrow {
-    background: var(--primary);
-    color: white;
-}
-
-.btn-borrow:disabled {
+.borrow-btn:disabled {
     background: #e5e5ed;
     color: #777;
     cursor: not-allowed;
-    transform: none;
 }
 
-.empty-message {
+.empty {
     display: none;
-    text-align: center;
-    padding: 40px;
     background: white;
-    border-radius: 14px;
-    color: var(--muted);
+    text-align: center;
+    padding: 30px;
+    border-radius: 12px;
 }
 
-/* AI Assistant */
+/* AI ASSISTANT */
 .ai-section {
     background: linear-gradient(135deg, #211b60, #5145cd);
     color: white;
+    min-height: 70vh;
 }
 
-.ai-section .section-heading h2 {
-    color: white;
+.ai-section .section-label {
+    color: #c9c0ff;
 }
 
 .ai-section .section-heading p {
-    color: #dedaff;
+    color: #e0dcff;
 }
 
 .ai-panel {
-    background: white;
-    color: var(--dark);
     max-width: 850px;
-    border-radius: 18px;
+    margin: auto;
     padding: 25px;
-    margin: 0 auto;
+    background: white;
+    color: #202044;
+    border-radius: 18px;
 }
 
 .ai-title {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 13px;
     margin-bottom: 15px;
 }
 
 .ai-icon {
+    font-size: 30px;
     background: #eeecff;
     padding: 12px;
     border-radius: 12px;
-    font-size: 26px;
 }
 
 .ai-title p {
-    color: var(--muted);
+    color: #777790;
     font-size: 13px;
-    margin-top: 5px;
 }
 
-.ai-input-row {
+.suggestions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 15px 0;
+}
+
+.suggestion {
+    padding: 9px 12px;
+    background: #f5f3ff;
+    color: #5145cd;
+    border: 1px solid #ded9ff;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.ai-form {
     display: flex;
     gap: 10px;
     margin: 18px 0;
 }
 
-.ai-input-row input {
+.ai-form input {
     flex: 1;
     min-width: 0;
-    padding: 14px;
-    border: 1px solid #deddf0;
-    border-radius: 10px;
-    font-size: 14px;
-}
-
-.suggestions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 18px;
-}
-
-.suggestion {
-    padding: 9px 12px;
-    border-radius: 20px;
-    border: 1px solid #deddf0;
-    background: #f8f7ff;
-    color: var(--primary);
-    cursor: pointer;
-    font-size: 12px;
-    font-weight: 700;
+    padding: 13px;
+    border: 1px solid #dcd9f1;
+    border-radius: 9px;
 }
 
 .ai-response {
     display: none;
-    background: #f5f4ff;
-    border-left: 4px solid var(--primary);
-    border-radius: 8px;
+    background: #f5f3ff;
     padding: 18px;
-    line-height: 1.8;
+    border-left: 4px solid #5145cd;
+    border-radius: 9px;
+}
+
+.ai-response h3 {
+    margin-bottom: 8px;
 }
 
 .ai-response ul {
-    padding-left: 20px;
-    margin-top: 10px;
+    padding-left: 22px;
 }
 
-/* Catalog */
+/* CATALOG TABLE */
 .table-wrap {
     overflow-x: auto;
     border-radius: 12px;
-    box-shadow: 0 5px 20px #24204c08;
 }
 
 table {
     width: 100%;
+    min-width: 600px;
     border-collapse: collapse;
-    min-width: 650px;
     background: white;
 }
 
 th, td {
+    padding: 14px;
     text-align: left;
-    padding: 15px;
     border-bottom: 1px solid #ecebf5;
     font-size: 14px;
 }
@@ -518,16 +447,12 @@ tbody tr:nth-child(even) {
     background: #f7f6ff;
 }
 
-tbody tr:hover {
-    background: #efedff;
-}
-
-/* Rules */
+/* RULES */
 .rules-box {
     background: white;
-    padding: 25px;
+    border: 1px solid #e8e5fa;
     border-radius: 15px;
-    border: 1px solid #ebeaf7;
+    padding: 23px;
 }
 
 .rules-box ul {
@@ -535,37 +460,20 @@ tbody tr:hover {
 }
 
 .rules-box li {
-    padding: 13px 0;
+    padding: 11px 0;
     border-bottom: 1px solid #eeeef5;
-    line-height: 1.6;
 }
 
 .rules-box li:last-child {
     border-bottom: none;
 }
 
-/* Toast */
-.toast {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: #171b3b;
-    color: white;
-    padding: 15px 20px;
-    border-radius: 10px;
-    box-shadow: 0 8px 25px #0003;
-    display: none;
-    z-index: 100;
-    max-width: calc(100% - 40px);
-}
-
-/* Footer */
+/* FOOTER */
 footer {
     background: #171b3b;
     color: white;
     text-align: center;
     padding: 28px 15px;
-    line-height: 1.9;
 }
 
 footer p {
@@ -573,13 +481,23 @@ footer p {
     font-size: 13px;
 }
 
+/* NOTIFICATION */
+.toast {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #171b3b;
+    color: white;
+    padding: 14px 18px;
+    border-radius: 10px;
+    z-index: 10;
+}
+
+/* MOBILE DESIGN */
 @media (max-width: 850px) {
     .hero {
         grid-template-columns: 1fr;
-    }
-
-    .hero-art {
-        min-height: 220px;
     }
 
     .stats-grid {
@@ -597,13 +515,13 @@ footer p {
         justify-content: center;
     }
 
-    nav a {
-        padding: 8px;
+    nav button {
         font-size: 12px;
+        padding: 7px;
     }
 
     section {
-        padding: 32px 5%;
+        padding: 30px 5%;
     }
 
     .hero {
@@ -615,7 +533,7 @@ footer p {
     }
 
     .stat-card {
-        padding: 16px;
+        padding: 14px;
     }
 
     .stat-number {
@@ -623,24 +541,24 @@ footer p {
     }
 
     .book-grid {
-        grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 12px;
     }
 
     .book-card {
-        padding: 12px;
+        padding: 10px;
     }
 
     .book-cover {
-        height: 145px;
-        font-size: 50px;
+        height: 120px;
+        font-size: 48px;
     }
 
-    .ai-input-row {
+    .ai-form {
         flex-direction: column;
     }
 
-    .ai-input-row .btn {
+    .ai-form button {
         width: 100%;
     }
 }
@@ -649,248 +567,228 @@ footer p {
 
 <body>
 
+<!-- HEADER AND NAVIGATION -->
 <header>
     <div>
-        <div class="logo">📚 AI <span>Digital Library</span></div>
-        <p>Your smart companion for learning and discovery</p>
+        <div class="logo">📚 AI <span>Engineering Library</span></div>
+        <p>Your smart companion for B.Tech studies</p>
     </div>
 
     <nav>
-        <a href="#home">Home</a>
-        <a href="#dashboard">Dashboard</a>
-        <a href="#books">Books</a>
-        <a href="#ai">AI Assistant</a>
-        <a href="#catalog">Catalog</a>
-        <a href="#rules">Rules</a>
+        <button class="active" onclick="showPage('home', this)">Home</button>
+        <button onclick="showPage('dashboard', this)">Dashboard</button>
+        <button onclick="showPage('books', this)">Books</button>
+        <button onclick="showPage('ai', this)">AI Assistant</button>
+        <button onclick="showPage('catalog', this)">Catalog</button>
+        <button onclick="showPage('rules', this)">Rules</button>
     </nav>
 </header>
 
-<!-- HOME -->
-<div class="hero" id="home">
-    <div>
-        <span class="tag">✨ SMART LEARNING EXPERIENCE</span>
+<!-- HOME PAGE -->
+<div class="page active" id="page-home">
+    <div class="hero">
+        <div>
+            <span class="tag">✨ SMART ENGINEERING LEARNING</span>
+            <h1>Explore Your <span>Engineering Library.</span></h1>
 
-        <h1>Discover Your Next <span>Favorite Book.</span></h1>
+            <p>
+                Discover engineering textbooks, explore different branches,
+                search by author, check availability, and find useful study
+                resources for your B.Tech journey.
+            </p>
 
-        <p>
-            Explore our digital collection, find books by category,
-            check availability, and get personalized recommendations
-            from your smart library assistant.
-        </p>
-
-        <div class="hero-buttons">
-            <button class="btn btn-primary"
-                onclick="showBooks()">
+            <button class="btn primary" onclick="showPage('books')">
                 📚 Explore Books
             </button>
 
-            <button class="btn btn-light"
-                onclick="document.getElementById('ai').scrollIntoView()">
+            <button class="btn secondary" onclick="showPage('ai')">
                 ✨ Ask AI Assistant
             </button>
         </div>
-    </div>
 
-    <div class="hero-art">
-        <div class="big-book">📚</div>
-        <h2>Knowledge Without Limits</h2>
-        <p>Read • Learn • Explore • Grow</p>
+        <div class="hero-art">
+            <div class="book">📚</div>
+            <h2>Knowledge Without Limits</h2>
+            <p>Learn • Build • Innovate • Succeed</p>
+        </div>
     </div>
 </div>
 
-<!-- DASHBOARD -->
-<section class="dashboard" id="dashboard">
-    <div class="section-heading">
-        <div class="section-label">Library Overview</div>
-        <h2>Your Library Dashboard</h2>
-        <p>Get a quick overview of the books in your library.</p>
-    </div>
-
-    <div class="stats-grid">
-        <div class="stat-card">
-            <div class="stat-icon">📚</div>
-            <div class="stat-number" id="totalBooks">0</div>
-            <p>Total Books</p>
+<!-- DASHBOARD PAGE -->
+<div class="page" id="page-dashboard">
+    <section>
+        <div class="section-heading">
+            <div class="section-label">Library Overview</div>
+            <h2>📊 Engineering Library Dashboard</h2>
+            <p>Check the current status of our engineering collection.</p>
         </div>
 
-        <div class="stat-card">
-            <div class="stat-icon">✅</div>
-            <div class="stat-number" id="availableBooks">0</div>
-            <p>Available Books</p>
-        </div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📚</div>
+                <div class="stat-number" id="totalBooks">0</div>
+                <p>Total Books</p>
+            </div>
 
-        <div class="stat-card">
-            <div class="stat-icon">📕</div>
-            <div class="stat-number" id="unavailableBooks">0</div>
-            <p>Unavailable Books</p>
-        </div>
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div class="stat-number" id="availableBooks">0</div>
+                <p>Available Books</p>
+            </div>
 
-        <div class="stat-card">
-            <div class="stat-icon">👤</div>
-            <div class="stat-number" id="borrowedBooks">0</div>
-            <p>Books Borrowed This Session</p>
-        </div>
-    </div>
-</section>
+            <div class="stat-card">
+                <div class="stat-icon">📕</div>
+                <div class="stat-number" id="unavailableBooks">0</div>
+                <p>Unavailable Books</p>
+            </div>
 
-<!-- BOOK COLLECTION -->
-<section class="books-section" id="books">
-    <div class="section-heading">
-        <div class="section-label">Explore Collection</div>
-        <h2>📖 Our Book Collection</h2>
-        <p>Browse, search, and borrow your favorite books.</p>
-    </div>
-
-    <div class="book-toolbar">
-        <input
-            type="search"
-            class="search-input"
-            id="search"
-            placeholder="🔍 Search by title or author..."
-            aria-label="Search books"
-        >
-
-        <select class="category-select" id="category"
-            aria-label="Filter by category">
-            <option value="all">All Categories</option>
-            <option value="Programming">Programming</option>
-            <option value="Science">Science</option>
-            <option value="Fiction">Fiction</option>
-            <option value="Technology">Technology</option>
-            <option value="Self-Help">Self-Help</option>
-            <option value="History">History</option>
-        </select>
-    </div>
-
-    <p class="results-count" id="resultsCount" aria-live="polite">
-        Showing all books
-    </p>
-
-    <div class="book-grid" id="bookGrid"></div>
-
-    <div class="empty-message" id="emptyMessage">
-        <h3>📭 No books found</h3>
-        <p>Try another book title, author, or category.</p>
-    </div>
-</section>
-
-<!-- AI ASSISTANT -->
-<section class="ai-section" id="ai">
-    <div class="section-heading">
-        <div class="section-label" style="color:#c5bdff">
-            Intelligent Book Finder
-        </div>
-        <h2>✨ Meet Your AI Book Assistant</h2>
-        <p>
-            Tell the assistant what you want to learn about
-            and get book suggestions from our library collection.
-        </p>
-    </div>
-
-    <div class="ai-panel">
-        <div class="ai-title">
-            <div class="ai-icon">🤖</div>
-            <div>
-                <h3>Library AI Assistant</h3>
-                <p>Ready to help you discover a book</p>
+            <div class="stat-card">
+                <div class="stat-icon">👤</div>
+                <div class="stat-number" id="borrowedBooks">0</div>
+                <p>Books Borrowed This Session</p>
             </div>
         </div>
+    </section>
+</div>
 
-        <p>
-            What kind of book are you looking for?
-            For example, programming, science, fiction, or personal growth.
-        </p>
-
-        <div class="suggestions">
-            <button class="suggestion"
-                onclick="quickAsk('I want to learn programming')">
-                💻 Learn Programming
-            </button>
-
-            <button class="suggestion"
-                onclick="quickAsk('Recommend science books')">
-                🔬 Science Books
-            </button>
-
-            <button class="suggestion"
-                onclick="quickAsk('Suggest a fiction book')">
-                📖 Fiction
-            </button>
-
-            <button class="suggestion"
-                onclick="quickAsk('I want self improvement books')">
-                🌱 Self-Improvement
-            </button>
+<!-- BOOKS PAGE -->
+<div class="page" id="page-books">
+    <section>
+        <div class="section-heading">
+            <div class="section-label">Explore Collection</div>
+            <h2>📖 Engineering Book Collection</h2>
+            <p>Search textbooks for different engineering branches.</p>
         </div>
 
-        <form class="ai-input-row" id="aiForm">
-            <input
-                type="text"
-                id="aiInput"
-                placeholder="Ask me what book you should read..."
-                aria-label="Ask the book assistant"
-                required
-            >
-            <button class="btn btn-primary" type="submit">
-                ✨ Get Recommendations
-            </button>
-        </form>
+        <div class="toolbar">
+            <input class="search-input" type="search" id="search"
+                placeholder="🔍 Search title, author or branch..."
+                aria-label="Search books">
 
-        <div class="ai-response" id="aiResponse"
-            aria-live="polite"></div>
-    </div>
-</section>
+            <select class="category-select" id="category"
+                aria-label="Filter by engineering branch">
+                <option value="all">All Engineering Branches</option>
+                <option value="Programming">Programming</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Electronics">Electronics & ECE</option>
+                <option value="Electrical">Electrical & EEE</option>
+                <option value="Mechanical">Mechanical</option>
+                <option value="Civil">Civil Engineering</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Physics">Engineering Physics</option>
+            </select>
+        </div>
 
-<!-- CATALOG -->
-<section id="catalog">
-    <div class="section-heading">
-        <div class="section-label">Library Records</div>
-        <h2>📋 Complete Book Catalog</h2>
-        <p>View book IDs, authors, categories, and current availability.</p>
-    </div>
+        <p class="results" id="resultsCount" aria-live="polite"></p>
+        <div class="book-grid" id="bookGrid"></div>
 
-    <div class="table-wrap">
-        <table>
-            <thead>
-                <tr>
-                    <th>Book ID</th>
-                    <th>Book Name</th>
-                    <th>Author</th>
-                    <th>Category</th>
-                    <th>Availability</th>
-                </tr>
-            </thead>
-            <tbody id="catalogBody"></tbody>
-        </table>
-    </div>
-</section>
+        <div class="empty" id="emptyMessage">
+            <h3>📭 No Books Found</h3>
+            <p>Try another title, author, or engineering branch.</p>
+        </div>
+    </section>
+</div>
 
-<!-- RULES -->
-<section id="rules">
-    <div class="section-heading">
-        <div class="section-label">Good Reading Habits</div>
-        <h2>📌 Library Rules</h2>
-        <p>Help us maintain a welcoming learning environment.</p>
-    </div>
+<!-- AI ASSISTANT PAGE -->
+<div class="page" id="page-ai">
+    <section class="ai-section">
+        <div class="section-heading">
+            <div class="section-label">Smart Book Finder</div>
+            <h2>✨ Engineering Book Assistant</h2>
+            <p>Enter a subject or engineering branch to find suitable books.</p>
+        </div>
 
-    <div class="rules-box">
-        <ul>
-            <li>🪪 Students must carry their library ID card.</li>
-            <li>📅 Books can be borrowed for 14 days.</li>
-            <li>⏰ Return books before the due date.</li>
-            <li>📚 Keep books clean and handle them carefully.</li>
-            <li>🤫 Maintain silence inside the library.</li>
-            <li>🛠️ Report damaged or missing books to the librarian.</li>
-            <li>💻 Use the AI assistant to discover books in the collection.</li>
-        </ul>
-    </div>
-</section>
+        <div class="ai-panel">
+            <div class="ai-title">
+                <div class="ai-icon">🤖</div>
+                <div>
+                    <h3>Library AI Assistant</h3>
+                    <p>Your study companion</p>
+                </div>
+            </div>
 
+            <p>What subject do you want to learn?</p>
+
+            <div class="suggestions">
+                <button class="suggestion" onclick="quickAsk('programming')">💻 Programming</button>
+                <button class="suggestion" onclick="quickAsk('computer science')">🌐 Computer Science</button>
+                <button class="suggestion" onclick="quickAsk('electronics')">🔌 Electronics</button>
+                <button class="suggestion" onclick="quickAsk('mechanical')">⚙️ Mechanical</button>
+                <button class="suggestion" onclick="quickAsk('civil')">🏗️ Civil</button>
+                <button class="suggestion" onclick="quickAsk('mathematics')">📐 Mathematics</button>
+            </div>
+
+            <form class="ai-form" id="aiForm">
+                <input type="text" id="aiInput"
+                    placeholder="Example: I want to learn Python"
+                    aria-label="Enter a subject" required>
+
+                <button class="btn primary" type="submit">
+                    ✨ Get Recommendations
+                </button>
+            </form>
+
+            <div class="ai-response" id="aiResponse" aria-live="polite"></div>
+        </div>
+    </section>
+</div>
+
+<!-- CATALOG PAGE -->
+<div class="page" id="page-catalog">
+    <section>
+        <div class="section-heading">
+            <div class="section-label">Library Records</div>
+            <h2>📋 Complete Book Catalog</h2>
+            <p>View book IDs, authors, branches, and availability.</p>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Book ID</th>
+                        <th>Book Name</th>
+                        <th>Author</th>
+                        <th>Branch</th>
+                        <th>Availability</th>
+                    </tr>
+                </thead>
+                <tbody id="catalogBody"></tbody>
+            </table>
+        </div>
+    </section>
+</div>
+
+<!-- RULES PAGE -->
+<div class="page" id="page-rules">
+    <section>
+        <div class="section-heading">
+            <div class="section-label">Good Reading Habits</div>
+            <h2>📌 Library Rules</h2>
+            <p>Follow these rules to maintain a good learning environment.</p>
+        </div>
+
+        <div class="rules-box">
+            <ul>
+                <li>🪪 Carry your college library ID card.</li>
+                <li>📅 Books can be borrowed for 14 days.</li>
+                <li>⏰ Return books before the due date.</li>
+                <li>📚 Handle textbooks carefully.</li>
+                <li>🤫 Maintain silence inside the library.</li>
+                <li>🛠️ Report damaged books to the librarian.</li>
+                <li>💻 Use the search feature to find textbooks quickly.</li>
+                <li>📖 Return borrowed books before borrowing another copy.</li>
+            </ul>
+        </div>
+    </section>
+</div>
+
+<!-- FOOTER -->
 <footer>
-    <h3>📚 AI Digital Library</h3>
-    <p>Learn Something New Every Day!</p>
+    <h3>📚 AI Engineering Digital Library</h3>
+    <p>Learn Today, Engineer Tomorrow!</p>
     <p>Contact: library@example.com</p>
-    <p>© 2026 Digital Library | Educational Project</p>
+    <p>© 2026 Engineering Library | B.Tech Educational Project</p>
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -898,161 +796,87 @@ footer p {
 <script>
 // BOOK DATABASE
 const books = [
-    {
-        id: 101,
-        title: "Python Crash Course",
-        author: "Eric Matthes",
-        category: "Programming",
-        available: true,
-        emoji: "🐍",
-        color: "#dff7ed"
-    },
-    {
-        id: 102,
-        title: "A Brief History of Time",
-        author: "Stephen Hawking",
-        category: "Science",
-        available: true,
-        emoji: "🌌",
-        color: "#e2e8ff"
-    },
-    {
-        id: 103,
-        title: "The Alchemist",
-        author: "Paulo Coelho",
-        category: "Fiction",
-        available: true,
-        emoji: "🧙",
-        color: "#fff0d9"
-    },
-    {
-        id: 104,
-        title: "HTML and CSS",
-        author: "Jon Duckett",
-        category: "Programming",
-        available: true,
-        emoji: "🌐",
-        color: "#dff1ff"
-    },
-    {
-        id: 105,
-        title: "Clean Code",
-        author: "Robert C. Martin",
-        category: "Programming",
-        available: true,
-        emoji: "💻",
-        color: "#e5e3ff"
-    },
-    {
-        id: 106,
-        title: "The Selfish Gene",
-        author: "Richard Dawkins",
-        category: "Science",
-        available: false,
-        emoji: "🧬",
-        color: "#dff7ed"
-    },
-    {
-        id: 107,
-        title: "Atomic Habits",
-        author: "James Clear",
-        category: "Self-Help",
-        available: true,
-        emoji: "🌱",
-        color: "#e1f7e8"
-    },
-    {
-        id: 108,
-        title: "The Great Gatsby",
-        author: "F. Scott Fitzgerald",
-        category: "Fiction",
-        available: true,
-        emoji: "🎭",
-        color: "#ffebdf"
-    },
-    {
-        id: 109,
-        title: "A Brief History of Nearly Everything",
-        author: "Bill Bryson",
-        category: "Science",
-        available: true,
-        emoji: "🔭",
-        color: "#e3edff"
-    },
-    {
-        id: 110,
-        title: "The Art of War",
-        author: "Sun Tzu",
-        category: "History",
-        available: true,
-        emoji: "🏛️",
-        color: "#f8e7d4"
-    },
-    {
-        id: 111,
-        title: "Introduction to Algorithms",
-        author: "Thomas H. Cormen",
-        category: "Technology",
-        available: false,
-        emoji: "⚙️",
-        color: "#e5e3ff"
-    },
-    {
-        id: 112,
-        title: "Think and Grow Rich",
-        author: "Napoleon Hill",
-        category: "Self-Help",
-        available: true,
-        emoji: "💡",
-        color: "#fff2c9"
-    }
+    {id:101, title:"Python Crash Course", author:"Eric Matthes", category:"Programming", available:true, emoji:"🐍", color:"#dff7ed"},
+    {id:102, title:"Introduction to Algorithms", author:"Thomas H. Cormen", category:"Computer Science", available:true, emoji:"💻", color:"#e2e8ff"},
+    {id:103, title:"Computer Networks", author:"Andrew S. Tanenbaum", category:"Computer Science", available:true, emoji:"🌐", color:"#dff1ff"},
+    {id:104, title:"Digital Design", author:"M. Morris Mano", category:"Electronics", available:true, emoji:"🔌", color:"#fff0d9"},
+    {id:105, title:"Electronic Devices and Circuit Theory", author:"Robert L. Boylestad", category:"Electronics", available:false, emoji:"🔋", color:"#e5e3ff"},
+    {id:106, title:"Electrical Machinery", author:"P. S. Bimbhra", category:"Electrical", available:true, emoji:"⚡", color:"#fff2c9"},
+    {id:107, title:"Engineering Mechanics", author:"S. Timoshenko", category:"Mechanical", available:true, emoji:"⚙️", color:"#e1f7e8"},
+    {id:108, title:"Thermodynamics", author:"Yunus A. Cengel", category:"Mechanical", available:true, emoji:"🔥", color:"#ffebdf"},
+    {id:109, title:"Building Materials", author:"S. K. Duggal", category:"Civil", available:true, emoji:"🏗️", color:"#f8e7d4"},
+    {id:110, title:"Surveying", author:"B. C. Punmia", category:"Civil", available:false, emoji:"📐", color:"#dff7ed"},
+    {id:111, title:"Higher Engineering Mathematics", author:"B. S. Grewal", category:"Mathematics", available:true, emoji:"📘", color:"#e3edff"},
+    {id:112, title:"Engineering Physics", author:"G. S. Raghuvanshi", category:"Physics", available:true, emoji:"🔬", color:"#e5e3ff"}
 ];
 
 let borrowedCount = 0;
 
-// DISPLAY BOOKS
-function renderBooks() {
-    const query = document.getElementById("search")
-        .value.toLowerCase().trim();
+// SHOW ONLY THE SELECTED PAGE
+function showPage(pageName, clickedButton) {
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
 
-    const category = document.getElementById("category").value;
+    const selectedPage = document.getElementById("page-" + pageName);
+
+    if (selectedPage) {
+        selectedPage.classList.add("active");
+    }
+
+    document.querySelectorAll("nav button").forEach(button => {
+        button.classList.remove("active");
+    });
+
+    if (clickedButton) {
+        clickedButton.classList.add("active");
+    } else {
+        document.querySelectorAll("nav button").forEach(button => {
+            if (button.textContent.trim().toLowerCase() === pageName.toLowerCase()
+                || (pageName === "ai" && button.textContent.includes("AI Assistant"))) {
+                button.classList.add("active");
+            }
+        });
+    }
+
+    window.scrollTo({top: 0, behavior: "smooth"});
+}
+
+// DISPLAY BOOKS AND FILTER RESULTS
+function renderBooks() {
+    const searchBox = document.getElementById("search");
+    const categoryBox = document.getElementById("category");
+
+    if (!searchBox || !categoryBox) return;
+
+    const query = searchBox.value.toLowerCase().trim();
+    const category = categoryBox.value;
 
     const filtered = books.filter(book => {
-        const matchesText =
-            book.title.toLowerCase().includes(query) ||
-            book.author.toLowerCase().includes(query) ||
-            book.category.toLowerCase().includes(query);
+        const text = (book.title + " " + book.author + " " + book.category).toLowerCase();
 
-        const matchesCategory =
-            category === "all" || book.category === category;
-
-        return matchesText && matchesCategory;
+        return text.includes(query) &&
+            (category === "all" || book.category === category);
     });
 
     document.getElementById("resultsCount").textContent =
         `Showing ${filtered.length} of ${books.length} books`;
 
-    const grid = document.getElementById("bookGrid");
-
-    grid.innerHTML = filtered.map(book => `
+    document.getElementById("bookGrid").innerHTML = filtered.map(book => `
         <article class="book-card">
-            <div class="book-cover"
-                 style="background:${book.color}">
+            <div class="book-cover" style="background:${book.color}">
                 ${book.emoji}
             </div>
 
-            <span class="book-category">${book.category}</span>
-
+            <span class="category-badge">${book.category}</span>
             <h3>${book.title}</h3>
-
             <p class="author">By ${book.author}</p>
 
             <p class="status ${book.available ? "available" : "unavailable"}">
                 ${book.available ? "● Available" : "● Not Available"}
             </p>
 
-            <button
-                class="btn btn-borrow"
+            <button class="btn borrow-btn primary"
                 ${book.available ? "" : "disabled"}
                 onclick="borrowBook(${book.id})">
                 ${book.available ? "📥 Borrow Book" : "Currently Unavailable"}
@@ -1069,8 +893,7 @@ function renderBooks() {
 
 // UPDATE DASHBOARD COUNTS
 function updateDashboard() {
-    document.getElementById("totalBooks").textContent =
-        books.length;
+    document.getElementById("totalBooks").textContent = books.length;
 
     document.getElementById("availableBooks").textContent =
         books.filter(book => book.available).length;
@@ -1078,40 +901,147 @@ function updateDashboard() {
     document.getElementById("unavailableBooks").textContent =
         books.filter(book => !book.available).length;
 
-    document.getElementById("borrowedBooks").textContent =
-        borrowedCount;
+    document.getElementById("borrowedBooks").textContent = borrowedCount;
 }
 
-// CATALOG TABLE
+// DISPLAY CATALOG TABLE
 function renderCatalog() {
-    document.getElementById("catalogBody").innerHTML =
-        books.map(book => `
-            <tr>
-                <td>${book.id}</td>
-                <td>${book.title}</td>
-                <td>${book.author}</td>
-                <td>${book.category}</td>
-                <td class="${book.available ? "available" : "unavailable"}">
-                    ${book.available ? "Available" : "Not Available"}
-                </td>
-            </tr>
-        `).join("");
+    document.getElementById("catalogBody").innerHTML = books.map(book => `
+        <tr>
+            <td>${book.id}</td>
+            <td>${book.title}</td>
+            <td>${book.author}</td>
+            <td>${book.category}</td>
+            <td class="${book.available ? "available" : "unavailable"}">
+                ${book.available ? "Available" : "Not Available"}
+            </td>
+        </tr>
+    `).join("");
 }
 
-// NAVIGATION: BOOKS
-function showBooks() {
-    document.getElementById("books").scrollIntoView({
-        behavior: "smooth"
-    });
-
-    renderBooks();
-
-    showToast(`📚 Our library has ${books.length} books!`);
-}
-
-// BORROW BOOK
+// BORROW A BOOK
 function borrowBook(id) {
     const book = books.find(item => item.id === id);
 
     if (!book || !book.available) {
-        show
+        showToast("Sorry, this book is unavailable.");
+        return;
+    }
+
+    book.available = false;
+    borrowedCount++;
+
+    renderBooks();
+    showToast(`You borrowed "${book.title}" successfully!`);
+}
+
+// SEARCH AND FILTER
+document.getElementById("search").addEventListener("input", renderBooks);
+document.getElementById("category").addEventListener("change", renderBooks);
+
+// SHOW MESSAGE
+function showToast(message) {
+    const toast = document.getElementById("toast");
+
+    toast.textContent = message;
+    toast.style.display = "block";
+
+    clearTimeout(window.toastTimer);
+
+    window.toastTimer = setTimeout(() => {
+        toast.style.display = "none";
+    }, 3000);
+}
+
+// AI ASSISTANT SUGGESTIONS
+function quickAsk(subject) {
+    document.getElementById("aiInput").value = subject;
+    recommendBooks(subject);
+}
+
+document.getElementById("aiForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const query = document.getElementById("aiInput").value.trim();
+
+    if (query) {
+        recommendBooks(query);
+    }
+});
+
+// RECOMMEND BOOKS BY SUBJECT
+function recommendBooks(query) {
+    const words = query.toLowerCase();
+
+    const keywords = {
+        python: "Programming",
+        coding: "Programming",
+        programming: "Programming",
+        computer: "Computer Science",
+        algorithm: "Computer Science",
+        network: "Computer Science",
+        electronics: "Electronics",
+        circuit: "Electronics",
+        ece: "Electronics",
+        electrical: "Electrical",
+        eee: "Electrical",
+        mechanical: "Mechanical",
+        thermodynamics: "Mechanical",
+        civil: "Civil",
+        surveying: "Civil",
+        building: "Civil",
+        math: "Mathematics",
+        mathematics: "Mathematics",
+        physics: "Physics"
+    };
+
+    let categoryMatch = null;
+
+    for (const word in keywords) {
+        if (words.includes(word)) {
+            categoryMatch = keywords[word];
+            break;
+        }
+    }
+
+    const matches = books.filter(book => {
+        if (categoryMatch) {
+            return book.category === categoryMatch;
+        }
+
+        return (book.title + " " + book.author + " " + book.category)
+            .toLowerCase().includes(words);
+    });
+
+    const response = document.getElementById("aiResponse");
+    response.style.display = "block";
+
+    if (matches.length > 0) {
+        response.innerHTML = `
+            <h3>📚 Recommended Books</h3>
+            <p>These books may help with your selected subject:</p>
+            <ul>
+                ${matches.map(book => `
+                    <li><strong>${book.title}</strong> — ${book.author}
+                    (${book.available ? "Available" : "Currently unavailable"})</li>
+                `).join("")}
+            </ul>
+        `;
+    } else {
+        response.innerHTML = `
+            <h3>🔎 Let's Explore!</h3>
+            <p>No exact recommendation found. Try Python, Computer Science,
+            Electronics, Electrical, Mechanical, Civil, Mathematics, or Physics.</p>
+        `;
+    }
+}
+
+// LOAD WEBSITE
+renderBooks();
+renderCatalog();
+updateDashboard();
+showPage("home");
+</script>
+
+</body>
+</html>
