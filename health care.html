@@ -1,0 +1,404 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Care Hospital</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f8ff;
+            color: #12345a;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #087cf0;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background: #ffffff;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #087cf0;
+            text-decoration: none;
+            margin: 10px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ff6b6b;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #c9edff, #ffffff);
+        }
+
+        .hero h2 {
+            font-size: 35px;
+            color: #0755a5;
+        }
+
+        .hero p {
+            margin: 15px;
+        }
+
+        .hero a {
+            display: inline-block;
+            background: #087cf0;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        section {
+            padding: 35px 20px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #0755a5;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit, minmax(200px, 1fr)
+            );
+            gap: 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px #c9dcec;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 18px #a9c9e5;
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .card h3 {
+            color: #087cf0;
+            margin: 10px 0;
+        }
+
+        .info {
+            background: #e0f2ff;
+        }
+
+        .emergency {
+            background: #fff0f0;
+            color: #b00020;
+        }
+
+        form {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px #c9dcec;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border: 1px solid #a9c9e5;
+            border-radius: 6px;
+            font: inherit;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: 2px solid #087cf0;
+            border-color: #087cf0;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 20px;
+            background: #087cf0;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0755a5;
+        }
+
+        footer {
+            background: #12345a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .hero h2 {
+                font-size: 27px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            section {
+                padding: 25px 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🏥 City Care Hospital</h1>
+        <p>Your Health, Our Priority</p>
+    </header>
+
+    <nav aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#departments">Departments</a>
+        <a href="#doctors">Doctors</a>
+        <a href="#facilities">Facilities</a>
+        <a href="#visiting">Visiting Hours</a>
+        <a href="#emergency">Emergency</a>
+        <a href="#appointment">Appointment</a>
+    </nav>
+
+    <div class="hero" id="home">
+        <h2>Better Health for a Brighter Tomorrow</h2>
+        <p>Advanced healthcare with experienced doctors
+           and compassionate care.</p>
+        <a href="#appointment">Book an Appointment</a>
+    </div>
+
+    <section id="departments">
+        <h2>Our Departments</h2>
+
+        <div class="container">
+            <div class="card">
+                <h3>❤️ Cardiology</h3>
+                <p>Heart care and treatment.</p>
+            </div>
+
+            <div class="card">
+                <h3>🧠 Neurology</h3>
+                <p>Brain and nerve treatment.</p>
+            </div>
+
+            <div class="card">
+                <h3>🦴 Orthopedics</h3>
+                <p>Bone and joint care.</p>
+            </div>
+
+            <div class="card">
+                <h3>👶 Pediatrics</h3>
+                <p>Healthcare for children.</p>
+            </div>
+
+            <div class="card">
+                <h3>🩺 General Medicine</h3>
+                <p>General health checkups.</p>
+            </div>
+
+            <div class="card">
+                <h3>👩 Gynecology</h3>
+                <p>Women's healthcare.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="doctors" class="info">
+        <h2>Meet Our Doctors</h2>
+
+        <div class="container">
+            <div class="card">
+                <img
+                    src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=500&q=80"
+                    alt="Doctor in a white medical coat">
+                <h3>Dr. Ravi Kumar</h3>
+                <p>Cardiologist</p>
+                <p>Experience: 10 years</p>
+            </div>
+
+            <div class="card">
+                <img
+                    src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&q=80"
+                    alt="Woman doctor in a white medical coat">
+                <h3>Dr. Priya Sharma</h3>
+                <p>Neurologist</p>
+                <p>Experience: 8 years</p>
+            </div>
+
+            <div class="card">
+                <img
+                    src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=500&q=80"
+                    alt="Doctor wearing a stethoscope">
+                <h3>Dr. Anil Verma</h3>
+                <p>Orthopedic Specialist</p>
+                <p>Experience: 12 years</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="facilities">
+        <h2>Our Facilities</h2>
+
+        <div class="container">
+            <div class="card">
+                <h3>🚑 Emergency Care</h3>
+                <p>Emergency assistance available 24/7.</p>
+            </div>
+
+            <div class="card">
+                <h3>🏥 Modern Rooms</h3>
+                <p>Clean and comfortable patient rooms.</p>
+            </div>
+
+            <div class="card">
+                <h3>🔬 Laboratory</h3>
+                <p>Medical testing and diagnostic services.</p>
+            </div>
+
+            <div class="card">
+                <h3>💊 Pharmacy</h3>
+                <p>Medicine services for patients.</p>
+            </div>
+
+            <div class="card">
+                <h3>🩻 Advanced Scanning</h3>
+                <p>Diagnostic imaging facilities.</p>
+            </div>
+
+            <div class="card">
+                <h3>🛏️ ICU</h3>
+                <p>Critical care for patients.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="visiting" class="info">
+        <h2>Visiting Hours</h2>
+
+        <div class="container">
+            <div class="card">
+                <h3>General Wards</h3>
+                <p>9:00 AM – 12:00 PM</p>
+                <p>4:00 PM – 7:00 PM</p>
+            </div>
+
+            <div class="card">
+                <h3>ICU</h3>
+                <p>10:00 AM – 11:00 AM</p>
+                <p>5:00 PM – 6:00 PM</p>
+                <p>Subject to hospital rules.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="emergency" class="emergency">
+        <h2>🚨 Emergency Contact</h2>
+        <p>For emergencies, contact your local emergency service.</p>
+        <p><strong>Hospital Phone:</strong> +91 98765 43210</p>
+        <p><strong>Ambulance:</strong> 108 (India)</p>
+        <p><strong>Availability:</strong> 24 hours</p>
+        <p><small>Replace sample contact details with verified
+        hospital information before publishing.</small></p>
+    </section>
+
+    <section id="appointment">
+        <h2>Request an Appointment</h2>
+        <p>Fill in the form to request a hospital appointment.</p>
+
+        <form action="#" method="post">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name"
+                   placeholder="Enter your name" required>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone"
+                   placeholder="Enter your phone number"
+                   autocomplete="tel" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email"
+                   placeholder="Enter your email"
+                   autocomplete="email" required>
+
+            <label for="department">Choose Department</label>
+            <select id="department" name="department" required>
+                <option value="">Select a department</option>
+                <option>Cardiology</option>
+                <option>Neurology</option>
+                <option>Orthopedics</option>
+                <option>Pediatrics</option>
+                <option>General Medicine</option>
+                <option>Gynecology</option>
+            </select>
+
+            <label for="date">Preferred Date</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="message">Additional Message</label>
+            <textarea id="message" name="message" rows="4"
+                      placeholder="Enter your message"></textarea>
+
+            <button type="submit">Submit Appointment Request</button>
+        </form>
+
+        <p><small>This demonstration form does not send or save
+        appointments. A server or form service is needed.</small></p>
+    </section>
+
+    <footer>
+        <h3>🏥 City Care Hospital</h3>
+        <p>Your Health, Our Priority</p>
+        <p>&copy; 2026 City Care Hospital. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

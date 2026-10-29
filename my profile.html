@@ -1,0 +1,529 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruthu | Personal Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #050505;
+            color: white;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            background: #101010;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-bottom: 1px solid #168cff;
+        }
+
+        .logo {
+            color: #168cff;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #168cff;
+            background: #168cff18;
+            box-shadow: 0 0 10px #168cff33;
+        }
+
+        /* Sections: hide all by default */
+        section {
+            display: none;
+            padding: 65px 8%;
+            min-height: 75vh;
+            animation: appear 0.5s ease;
+        }
+
+        /* Show only the selected section */
+        section.active-section {
+            display: block;
+        }
+
+        /* Home */
+        #home.active-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 85vh;
+            padding: 50px 20px;
+        }
+
+        .home h1 {
+            font-size: clamp(32px, 6vw, 55px);
+            margin-bottom: 10px;
+        }
+
+        .home h1 span {
+            color: #168cff;
+            text-shadow: 0 0 15px #168cff;
+        }
+
+        .home p {
+            color: #ccc;
+            max-width: 600px;
+            margin: 20px 0 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #168cff;
+            color: #050505;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: white;
+            box-shadow: 0 0 20px #168cff;
+            transform: translateY(-3px);
+        }
+
+        /* Headings */
+        .heading {
+            color: #168cff;
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+
+        .about {
+            max-width: 750px;
+            margin: auto;
+            text-align: center;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit, minmax(200px, 1fr)
+            );
+            gap: 20px;
+        }
+
+        .card {
+            background: #111827;
+            border: 1px solid #183c63;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #168cff;
+            box-shadow: 0 0 18px #168cff55;
+        }
+
+        .card h3 {
+            color: #168cff;
+            margin-bottom: 10px;
+        }
+
+        /* Education and achievements */
+        .info {
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .info p {
+            background: #111827;
+            border-left: 4px solid #168cff;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        /* Resume */
+        .resume {
+            text-align: center;
+            background: #0b1422;
+            border-radius: 15px;
+        }
+
+        .resume .heading {
+            margin-top: 10px;
+        }
+
+        /* Contact */
+        .contact {
+            text-align: center;
+        }
+
+        .contact p {
+            margin: 12px 0;
+        }
+
+        .contact a {
+            color: #168cff;
+            text-decoration: none;
+        }
+
+        footer {
+            background: #101010;
+            text-align: center;
+            padding: 20px;
+            color: #aaa;
+            border-top: 1px solid #168cff;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 13px;
+                padding: 6px 8px;
+            }
+
+            section {
+                padding: 45px 6%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="logo">MyPortfolio.</div>
+
+        <nav aria-label="Main navigation">
+            <a href="#home" data-section="home"
+               class="active" aria-current="page">Home</a>
+            <a href="#about" data-section="about">About</a>
+            <a href="#education" data-section="education">Education</a>
+            <a href="#skills" data-section="skills">Skills</a>
+            <a href="#hobbies" data-section="hobbies">Hobbies</a>
+            <a href="#projects" data-section="projects">Projects</a>
+            <a href="#achievements" data-section="achievements">Achievements</a>
+            <a href="#resume" data-section="resume">Resume</a>
+            <a href="#contact" data-section="contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Home -->
+    <section class="home active-section" id="home">
+        <h1>Hello, I'm <span>RUTHU</span></h1>
+        <h2>B.Tech Student | Future Developer</h2>
+
+        <p>
+            Welcome to my personal portfolio! I am a first-year
+            engineering student who loves learning technology,
+            creating projects, and exploring new ideas.
+        </p>
+
+        <button class="btn" data-go="about">
+            Explore My Portfolio
+        </button>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <h2 class="heading">About Me</h2>
+
+        <div class="about">
+            <p>
+                I am a passionate student interested in programming,
+                web development, and modern technology. My goal is
+                to improve my skills and create useful projects.
+            </p>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+        <h2 class="heading">Educational Qualifications</h2>
+
+        <div class="info">
+            <p>
+                <strong>B.Tech:</strong> RVR & NRI University,
+                Agiripalli | 2026–2030 | First Year | 80%
+            </p>
+            <p>
+                <strong>Intermediate:</strong> Sri Chaitanya Junior
+                College, Tadepalligudem | 2024–2026 | 80%
+            </p>
+            <p>
+                <strong>SSC:</strong> Z.P.H. School, Chinakapavaram
+                | 80%
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <h2 class="heading">My Technical Skills</h2>
+
+        <div class="cards">
+            <div class="card">
+                <h3>HTML</h3>
+                <p>Creating web page structures.</p>
+            </div>
+
+            <div class="card">
+                <h3>CSS</h3>
+                <p>Designing attractive and responsive websites.</p>
+            </div>
+
+            <div class="card">
+                <h3>Python</h3>
+                <p>Learning programming fundamentals.</p>
+            </div>
+
+            <div class="card">
+                <h3>AI Technology</h3>
+                <p>Exploring artificial intelligence.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hobbies -->
+    <section id="hobbies">
+        <h2 class="heading">My Hobbies</h2>
+
+        <div class="cards">
+            <div class="card">
+                <h3>📚 Reading</h3>
+                <p>Learning new things.</p>
+            </div>
+
+            <div class="card">
+                <h3>💻 Coding</h3>
+                <p>Practising programming.</p>
+            </div>
+
+            <div class="card">
+                <h3>🎵 Music</h3>
+                <p>Listening to music.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <h2 class="heading">My Projects</h2>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Personal Portfolio</h3>
+                <p>A website built using HTML and CSS.</p>
+            </div>
+
+            <div class="card">
+                <h3>Python Project</h3>
+                <p>A simple program using Python basics.</p>
+            </div>
+
+            <div class="card">
+                <h3>Future AI Project</h3>
+                <p>Exploring ideas for an AI-based project.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements">
+        <h2 class="heading">Achievements</h2>
+
+        <div class="info">
+            <p>🏆 Participated in a technical event.</p>
+            <p>📜 Completed a programming course.</p>
+            <p>🌟 Continuously learning new skills.</p>
+        </div>
+    </section>
+
+    <!-- Resume -->
+    <section class="resume" id="resume">
+        <h2 class="heading">My Resume</h2>
+
+        <p>View or download my resume below.</p>
+        <br>
+
+        <a href="resume.pdf" class="btn" target="_blank"
+           rel="noopener noreferrer">
+            View My Resume
+        </a>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <h2 class="heading">Contact Me</h2>
+
+        <p>
+            Email:
+            <a href="mailto:gajjelaruthu27@gmail.com">
+                gajjelaruthu27@gmail.com
+            </a>
+        </p>
+
+        <p>Phone: +91 9059240248</p>
+
+        <p>
+            GitHub:
+            <a href="https://github.com/" target="_blank"
+               rel="noopener noreferrer">
+                Visit GitHub
+            </a>
+        </p>
+
+        <p>Location: Andhra Pradesh, India</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 My Portfolio | Designed with HTML & CSS 💙</p>
+    </footer>
+
+    <!-- JavaScript: Display one section at a time -->
+    <script>
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(
+            "nav a[data-section]"
+        );
+
+        function showSection(sectionId) {
+            const selectedSection = document.getElementById(sectionId);
+
+            // Ignore invalid section names
+            if (!selectedSection ||
+                !selectedSection.matches("section")) {
+                return;
+            }
+
+            // Hide every section and show the selected one
+            sections.forEach(section => {
+                section.classList.toggle(
+                    "active-section",
+                    section.id === sectionId
+                );
+            });
+
+            // Highlight the selected navigation link
+            navLinks.forEach(link => {
+                const isActive =
+                    link.dataset.section === sectionId;
+
+                link.classList.toggle("active", isActive);
+
+                if (isActive) {
+                    link.setAttribute("aria-current", "page");
+                } else {
+                    link.removeAttribute("aria-current");
+                }
+            });
+
+            // Start the selected section at the top
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+        // Navigation clicks
+        navLinks.forEach(link => {
+            link.addEventListener("click", function(event) {
+                event.preventDefault();
+
+                const sectionId = this.dataset.section;
+
+                showSection(sectionId);
+                history.pushState(null, "", "#" + sectionId);
+            });
+        });
+
+        // Home button
+        document.querySelectorAll("[data-go]").forEach(button => {
+            button.addEventListener("click", function() {
+                const sectionId = this.dataset.go;
+
+                showSection(sectionId);
+                history.pushState(null, "", "#" + sectionId);
+            });
+        });
+
+        // Support direct links and browser back/forward
+        window.addEventListener("popstate", function() {
+            showSection(
+                location.hash.slice(1) || "home"
+            );
+        });
+
+        // Open the section specified in the URL on page load
+        const initialSection = location.hash.slice(1);
+        showSection(initialSection || "home");
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Digital Library</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #5145cd;
+    --secondary: #7868f5;
+    --dark: #171b3b;
+    --light: #f5f6ff;
+    --white: #ffffff;
+    --muted: #777b98;
+    --green: #138a54;
+    --red: #d93652;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--light);
+    color: var(--dark);
+}
+
+/* Header */
+header {
+    background: linear-gradient(120deg, #211b60, #5145cd, #8273ff);
+    color: white;
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.logo span {
+    color: #bdb5ff;
+}
+
+header p {
+    font-size: 13px;
+    margin-top: 5px;
+    color: #e5e2ff;
+}
+
+nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: .3s;
+}
+
+nav a:hover,
+nav a:focus {
+    background: #ffffff25;
+}
+
+/* Hero */
+.hero {
+    padding: 65px 7% 45px;
+    background:
+        radial-gradient(circle at 90% 20%, #d8d2ff 0, transparent 28%),
+        linear-gradient(120deg, #f0efff, #ffffff);
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 35px;
+    align-items: center;
+}
+
+.tag {
+    display: inline-block;
+    background: #e3e0ff;
+    color: var(--primary);
+    padding: 8px 14px;
+    border-radius: 25px;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: clamp(34px, 5vw, 55px);
+    line-height: 1.15;
+    margin-bottom: 18px;
+}
+
+.hero h1 span {
+    color: var(--primary);
+}
+
+.hero p {
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 560px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.btn {
+    border: none;
+    border-radius: 10px;
+    padding: 13px 19px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 14px;
+    transition: .25s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(.96);
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-light {
+    background: white;
+    color: var(--primary);
+    border: 1px solid #ddd9ff;
+}
+
+.hero-art {
+    background: linear-gradient(140deg, #6555df, #241b65);
+    border-radius: 25px;
+    min-height: 270px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    box-shadow: 0 18px 40px #5145cd30;
+    text-align: center;
+    padding: 25px;
+}
+
+.hero-art .big-book {
+    font-size: 90px;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 12px 10px #00000030);
+}
+
+.hero-art h2 {
+    color: white;
+    margin-bottom: 8px;
+}
+
+.hero-art p {
+    color: #e2deff;
+    font-size: 14px;
+}
+
+/* General sections */
+section {
+    padding: 45px 7%;
+}
+
+.section-heading {
+    margin-bottom: 25px;
+}
+
+.section-heading h2 {
+    font-size: 29px;
+    margin-bottom: 8px;
+}
+
+.section-heading p {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.section-label {
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+/* Dashboard */
+.dashboard {
+    padding-top: 30px;
+    padding-bottom: 15px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #eae9fa;
+    padding: 22px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px #24204c08;
+}
+
+.stat-icon {
+    font-size: 26px;
+    margin-bottom: 12px;
+}
+
+.stat-number {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.stat-card p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* Search and books */
+.books-section {
+    padding-top: 35px;
+}
+
+.book-toolbar {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+}
+
+.search-input,
+.category-select {
+    padding: 13px 15px;
+    border: 1px solid #deddf0;
+    background: white;
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+}
+
+.search-input {
+    flex: 1;
+    min-width: 220px;
+}
+
+.category-select {
+    min-width: 170px;
+}
+
+.search-input:focus,
+.category-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px #5145cd15;
+}
+
+.results-count {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+    gap: 22px;
+}
+
+.book-card {
+    background: white;
+    border-radius: 16px;
+    padding: 17px;
+    border: 1px solid #ebeaf7;
+    box-shadow: 0 5px 20px #24204c08;
+    transition: transform .25s, box-shadow .25s;
+    display: flex;
+    flex-direction: column;
+}
+
+.book-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px #24204c13;
+}
+
+.book-cover {
+    height: 190px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 65px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #e3e0ff, #f5e9ff);
+}
+
+.book-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.book-category {
+    color: var(--primary);
+    background: #eeecff;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 800;
+    display: inline-block;
+    align-self: flex-start;
+    margin-bottom: 10px;
+}
+
+.book-card h3 {
+    font-size: 17px;
+    margin-bottom: 9px;
+    line-height: 1.4;
+}
+
+.book-card .author {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.status {
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.available {
+    color: var(--green);
+}
+
+.unavailable {
+    color: var(--red);
+}
+
+.book-card .btn {
+    margin-top: auto;
+    width: 100%;
+}
+
+.btn-borrow {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-borrow:disabled {
+    background: #e5e5ed;
+    color: #777;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.empty-message {
+    display: none;
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: 14px;
+    color: var(--muted);
+}
+
+/* AI Assistant */
+.ai-section {
+    background: linear-gradient(135deg, #211b60, #5145cd);
+    color: white;
+}
+
+.ai-section .section-heading h2 {
+    color: white;
+}
+
+.ai-section .section-heading p {
+    color: #dedaff;
+}
+
+.ai-panel {
+    background: white;
+    color: var(--dark);
+    max-width: 850px;
+    border-radius: 18px;
+    padding: 25px;
+    margin: 0 auto;
+}
+
+.ai-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.ai-icon {
+    background: #eeecff;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 26px;
+}
+
+.ai-title p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.ai-input-row {
+    display: flex;
+    gap: 10px;
+    margin: 18px 0;
+}
+
+.ai-input-row input {
+    flex: 1;
+    min-width: 0;
+    padding: 14px;
+    border: 1px solid #deddf0;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.suggestion {
+    padding: 9px 12px;
+    border-radius: 20px;
+    border: 1px solid #deddf0;
+    background: #f8f7ff;
+    color: var(--primary);
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.ai-response {
+    display: none;
+    background: #f5f4ff;
+    border-left: 4px solid var(--primary);
+    border-radius: 8px;
+    padding: 18px;
+    line-height: 1.8;
+}
+
+.ai-response ul {
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+/* Catalog */
+.table-wrap {
+    overflow-x: auto;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px #24204c08;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+    background: white;
+}
+
+th, td {
+    text-align: left;
+    padding: 15px;
+    border-bottom: 1px solid #ecebf5;
+    font-size: 14px;
+}
+
+th {
+    background: #292263;
+    color: white;
+}
+
+tbody tr:nth-child(even) {
+    background: #f7f6ff;
+}
+
+tbody tr:hover {
+    background: #efedff;
+}
+
+/* Rules */
+.rules-box {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #ebeaf7;
+}
+
+.rules-box ul {
+    list-style: none;
+}
+
+.rules-box li {
+    padding: 13px 0;
+    border-bottom: 1px solid #eeeef5;
+    line-height: 1.6;
+}
+
+.rules-box li:last-child {
+    border-bottom: none;
+}
+
+/* Toast */
+.toast {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #171b3b;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px #0003;
+    display: none;
+    z-index: 100;
+    max-width: calc(100% - 40px);
+}
+
+/* Footer */
+footer {
+    background: #171b3b;
+    color: white;
+    text-align: center;
+    padding: 28px 15px;
+    line-height: 1.9;
+}
+
+footer p {
+    color: #c7c9e0;
+    font-size: 13px;
+}
+
+@media (max-width: 850px) {
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-art {
+        min-height: 220px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    nav a {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    section {
+        padding: 32px 5%;
+    }
+
+    .hero {
+        padding: 40px 5%;
+    }
+
+    .stats-grid {
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 16px;
+    }
+
+    .stat-number {
+        font-size: 25px;
+    }
+
+    .book-grid {
+        grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+        gap: 12px;
+    }
+
+    .book-card {
+        padding: 12px;
+    }
+
+    .book-cover {
+        height: 145px;
+        font-size: 50px;
+    }
+
+    .ai-input-row {
+        flex-direction: column;
+    }
+
+    .ai-input-row .btn {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div>
+        <div class="logo">📚 AI <span>Digital Library</span></div>
+        <p>Your smart companion for learning and discovery</p>
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#books">Books</a>
+        <a href="#ai">AI Assistant</a>
+        <a href="#catalog">Catalog</a>
+        <a href="#rules">Rules</a>
+    </nav>
+</header>
+
+<!-- HOME -->
+<div class="hero" id="home">
+    <div>
+        <span class="tag">✨ SMART LEARNING EXPERIENCE</span>
+
+        <h1>Discover Your Next <span>Favorite Book.</span></h1>
+
+        <p>
+            Explore our digital collection, find books by category,
+            check availability, and get personalized recommendations
+            from your smart library assistant.
+        </p>
+
+        <div class="hero-buttons">
+            <button class="btn btn-primary"
+                onclick="showBooks()">
+                📚 Explore Books
+            </button>
+
+            <button class="btn btn-light"
+                onclick="document.getElementById('ai').scrollIntoView()">
+                ✨ Ask AI Assistant
+            </button>
+        </div>
+    </div>
+
+    <div class="hero-art">
+        <div class="big-book">📚</div>
+        <h2>Knowledge Without Limits</h2>
+        <p>Read • Learn • Explore • Grow</p>
+    </div>
+</div>
+
+<!-- DASHBOARD -->
+<section class="dashboard" id="dashboard">
+    <div class="section-heading">
+        <div class="section-label">Library Overview</div>
+        <h2>Your Library Dashboard</h2>
+        <p>Get a quick overview of the books in your library.</p>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon">📚</div>
+            <div class="stat-number" id="totalBooks">0</div>
+            <p>Total Books</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">✅</div>
+            <div class="stat-number" id="availableBooks">0</div>
+            <p>Available Books</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">📕</div>
+            <div class="stat-number" id="unavailableBooks">0</div>
+            <p>Unavailable Books</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">👤</div>
+            <div class="stat-number" id="borrowedBooks">0</div>
+            <p>Books Borrowed This Session</p>
+        </div>
+    </div>
+</section>
+
+<!-- BOOK COLLECTION -->
+<section class="books-section" id="books">
+    <div class="section-heading">
+        <div class="section-label">Explore Collection</div>
+        <h2>📖 Our Book Collection</h2>
+        <p>Browse, search, and borrow your favorite books.</p>
+    </div>
+
+    <div class="book-toolbar">
+        <input
+            type="search"
+            class="search-input"
+            id="search"
+            placeholder="🔍 Search by title or author..."
+            aria-label="Search books"
+        >
+
+        <select class="category-select" id="category"
+            aria-label="Filter by category">
+            <option value="all">All Categories</option>
+            <option value="Programming">Programming</option>
+            <option value="Science">Science</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Technology">Technology</option>
+            <option value="Self-Help">Self-Help</option>
+            <option value="History">History</option>
+        </select>
+    </div>
+
+    <p class="results-count" id="resultsCount" aria-live="polite">
+        Showing all books
+    </p>
+
+    <div class="book-grid" id="bookGrid"></div>
+
+    <div class="empty-message" id="emptyMessage">
+        <h3>📭 No books found</h3>
+        <p>Try another book title, author, or category.</p>
+    </div>
+</section>
+
+<!-- AI ASSISTANT -->
+<section class="ai-section" id="ai">
+    <div class="section-heading">
+        <div class="section-label" style="color:#c5bdff">
+            Intelligent Book Finder
+        </div>
+        <h2>✨ Meet Your AI Book Assistant</h2>
+        <p>
+            Tell the assistant what you want to learn about
+            and get book suggestions from our library collection.
+        </p>
+    </div>
+
+    <div class="ai-panel">
+        <div class="ai-title">
+            <div class="ai-icon">🤖</div>
+            <div>
+                <h3>Library AI Assistant</h3>
+                <p>Ready to help you discover a book</p>
+            </div>
+        </div>
+
+        <p>
+            What kind of book are you looking for?
+            For example, programming, science, fiction, or personal growth.
+        </p>
+
+        <div class="suggestions">
+            <button class="suggestion"
+                onclick="quickAsk('I want to learn programming')">
+                💻 Learn Programming
+            </button>
+
+            <button class="suggestion"
+                onclick="quickAsk('Recommend science books')">
+                🔬 Science Books
+            </button>
+
+            <button class="suggestion"
+                onclick="quickAsk('Suggest a fiction book')">
+                📖 Fiction
+            </button>
+
+            <button class="suggestion"
+                onclick="quickAsk('I want self improvement books')">
+                🌱 Self-Improvement
+            </button>
+        </div>
+
+        <form class="ai-input-row" id="aiForm">
+            <input
+                type="text"
+                id="aiInput"
+                placeholder="Ask me what book you should read..."
+                aria-label="Ask the book assistant"
+                required
+            >
+            <button class="btn btn-primary" type="submit">
+                ✨ Get Recommendations
+            </button>
+        </form>
+
+        <div class="ai-response" id="aiResponse"
+            aria-live="polite"></div>
+    </div>
+</section>
+
+<!-- CATALOG -->
+<section id="catalog">
+    <div class="section-heading">
+        <div class="section-label">Library Records</div>
+        <h2>📋 Complete Book Catalog</h2>
+        <p>View book IDs, authors, categories, and current availability.</p>
+    </div>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Book ID</th>
+                    <th>Book Name</th>
+                    <th>Author</th>
+                    <th>Category</th>
+                    <th>Availability</th>
+                </tr>
+            </thead>
+            <tbody id="catalogBody"></tbody>
+        </table>
+    </div>
+</section>
+
+<!-- RULES -->
+<section id="rules">
+    <div class="section-heading">
+        <div class="section-label">Good Reading Habits</div>
+        <h2>📌 Library Rules</h2>
+        <p>Help us maintain a welcoming learning environment.</p>
+    </div>
+
+    <div class="rules-box">
+        <ul>
+            <li>🪪 Students must carry their library ID card.</li>
+            <li>📅 Books can be borrowed for 14 days.</li>
+            <li>⏰ Return books before the due date.</li>
+            <li>📚 Keep books clean and handle them carefully.</li>
+            <li>🤫 Maintain silence inside the library.</li>
+            <li>🛠️ Report damaged or missing books to the librarian.</li>
+            <li>💻 Use the AI assistant to discover books in the collection.</li>
+        </ul>
+    </div>
+</section>
+
+<footer>
+    <h3>📚 AI Digital Library</h3>
+    <p>Learn Something New Every Day!</p>
+    <p>Contact: library@example.com</p>
+    <p>© 2026 Digital Library | Educational Project</p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+// BOOK DATABASE
+const books = [
+    {
+        id: 101,
+        title: "Python Crash Course",
+        author: "Eric Matthes",
+        category: "Programming",
+        available: true,
+        emoji: "🐍",
+        color: "#dff7ed"
+    },
+    {
+        id: 102,
+        title: "A Brief History of Time",
+        author: "Stephen Hawking",
+        category: "Science",
+        available: true,
+        emoji: "🌌",
+        color: "#e2e8ff"
+    },
+    {
+        id: 103,
+        title: "The Alchemist",
+        author: "Paulo Coelho",
+        category: "Fiction",
+        available: true,
+        emoji: "🧙",
+        color: "#fff0d9"
+    },
+    {
+        id: 104,
+        title: "HTML and CSS",
+        author: "Jon Duckett",
+        category: "Programming",
+        available: true,
+        emoji: "🌐",
+        color: "#dff1ff"
+    },
+    {
+        id: 105,
+        title: "Clean Code",
+        author: "Robert C. Martin",
+        category: "Programming",
+        available: true,
+        emoji: "💻",
+        color: "#e5e3ff"
+    },
+    {
+        id: 106,
+        title: "The Selfish Gene",
+        author: "Richard Dawkins",
+        category: "Science",
+        available: false,
+        emoji: "🧬",
+        color: "#dff7ed"
+    },
+    {
+        id: 107,
+        title: "Atomic Habits",
+        author: "James Clear",
+        category: "Self-Help",
+        available: true,
+        emoji: "🌱",
+        color: "#e1f7e8"
+    },
+    {
+        id: 108,
+        title: "The Great Gatsby",
+        author: "F. Scott Fitzgerald",
+        category: "Fiction",
+        available: true,
+        emoji: "🎭",
+        color: "#ffebdf"
+    },
+    {
+        id: 109,
+        title: "A Brief History of Nearly Everything",
+        author: "Bill Bryson",
+        category: "Science",
+        available: true,
+        emoji: "🔭",
+        color: "#e3edff"
+    },
+    {
+        id: 110,
+        title: "The Art of War",
+        author: "Sun Tzu",
+        category: "History",
+        available: true,
+        emoji: "🏛️",
+        color: "#f8e7d4"
+    },
+    {
+        id: 111,
+        title: "Introduction to Algorithms",
+        author: "Thomas H. Cormen",
+        category: "Technology",
+        available: false,
+        emoji: "⚙️",
+        color: "#e5e3ff"
+    },
+    {
+        id: 112,
+        title: "Think and Grow Rich",
+        author: "Napoleon Hill",
+        category: "Self-Help",
+        available: true,
+        emoji: "💡",
+        color: "#fff2c9"
+    }
+];
+
+let borrowedCount = 0;
+
+// DISPLAY BOOKS
+function renderBooks() {
+    const query = document.getElementById("search")
+        .value.toLowerCase().trim();
+
+    const category = document.getElementById("category").value;
+
+    const filtered = books.filter(book => {
+        const matchesText =
+            book.title.toLowerCase().includes(query) ||
+            book.author.toLowerCase().includes(query) ||
+            book.category.toLowerCase().includes(query);
+
+        const matchesCategory =
+            category === "all" || book.category === category;
+
+        return matchesText && matchesCategory;
+    });
+
+    document.getElementById("resultsCount").textContent =
+        `Showing ${filtered.length} of ${books.length} books`;
+
+    const grid = document.getElementById("bookGrid");
+
+    grid.innerHTML = filtered.map(book => `
+        <article class="book-card">
+            <div class="book-cover"
+                 style="background:${book.color}">
+                ${book.emoji}
+            </div>
+
+            <span class="book-category">${book.category}</span>
+
+            <h3>${book.title}</h3>
+
+            <p class="author">By ${book.author}</p>
+
+            <p class="status ${book.available ? "available" : "unavailable"}">
+                ${book.available ? "● Available" : "● Not Available"}
+            </p>
+
+            <button
+                class="btn btn-borrow"
+                ${book.available ? "" : "disabled"}
+                onclick="borrowBook(${book.id})">
+                ${book.available ? "📥 Borrow Book" : "Currently Unavailable"}
+            </button>
+        </article>
+    `).join("");
+
+    document.getElementById("emptyMessage").style.display =
+        filtered.length ? "none" : "block";
+
+    renderCatalog();
+    updateDashboard();
+}
+
+// UPDATE DASHBOARD COUNTS
+function updateDashboard() {
+    document.getElementById("totalBooks").textContent =
+        books.length;
+
+    document.getElementById("availableBooks").textContent =
+        books.filter(book => book.available).length;
+
+    document.getElementById("unavailableBooks").textContent =
+        books.filter(book => !book.available).length;
+
+    document.getElementById("borrowedBooks").textContent =
+        borrowedCount;
+}
+
+// CATALOG TABLE
+function renderCatalog() {
+    document.getElementById("catalogBody").innerHTML =
+        books.map(book => `
+            <tr>
+                <td>${book.id}</td>
+                <td>${book.title}</td>
+                <td>${book.author}</td>
+                <td>${book.category}</td>
+                <td class="${book.available ? "available" : "unavailable"}">
+                    ${book.available ? "Available" : "Not Available"}
+                </td>
+            </tr>
+        `).join("");
+}
+
+// NAVIGATION: BOOKS
+function showBooks() {
+    document.getElementById("books").scrollIntoView({
+        behavior: "smooth"
+    });
+
+    renderBooks();
+
+    showToast(`📚 Our library has ${books.length} books!`);
+}
+
+// BORROW BOOK
+function borrowBook(id) {
+    const book = books.find(item => item.id === id);
+
+    if (!book || !book.available) {
+        show
